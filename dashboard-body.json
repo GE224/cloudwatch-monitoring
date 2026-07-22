@@ -1,0 +1,96 @@
+{
+  "widgets": [
+    {
+      "type": "metric",
+      "x": 0,
+      "y": 0,
+      "width": 12,
+      "height": 6,
+      "properties": {
+        "title": "CPU Utilization",
+        "region": "us-east-1",
+        "metrics": [
+          [ "AWS/EC2", "CPUUtilization", "InstanceId", "i-0c87cc8e8238ae7bc" ]
+        ],
+        "period": 300,
+        "stat": "Average",
+        "view": "timeSeries"
+      }
+    },
+    {
+      "type": "metric",
+      "x": 12,
+      "y": 0,
+      "width": 12,
+      "height": 6,
+      "properties": {
+        "title": "Memory Used %",
+        "region": "us-east-1",
+        "metrics": [
+          [ "CWAgent", "mem_used_percent", "InstanceId", "i-0c87cc8e8238ae7bc" ]
+        ],
+        "period": 300,
+        "stat": "Average",
+        "view": "timeSeries",
+        "annotations": {
+          "horizontal": [
+            { "label": "High memory threshold", "value": 80 }
+          ]
+        }
+      }
+    },
+    {
+      "type": "metric",
+      "x": 0,
+      "y": 6,
+      "width": 12,
+      "height": 6,
+      "properties": {
+        "title": "Disk Used % (root)",
+        "region": "us-east-1",
+        "metrics": [
+          [ "CWAgent", "disk_used_percent", "InstanceId", "i-0c87cc8e8238ae7bc", "path", "/", "device", "nvme0n1p1", "fstype", "xfs" ]
+        ],
+        "period": 300,
+        "stat": "Average",
+        "view": "timeSeries",
+        "annotations": {
+          "horizontal": [
+            { "label": "High disk threshold", "value": 85 }
+          ]
+        }
+      }
+    },
+    {
+      "type": "metric",
+      "x": 12,
+      "y": 6,
+      "width": 12,
+      "height": 6,
+      "properties": {
+        "title": "Swap Used %",
+        "region": "us-east-1",
+        "metrics": [
+          [ "CWAgent", "swap_used_percent", "InstanceId", "i-0c87cc8e8238ae7bc" ]
+        ],
+        "period": 300,
+        "stat": "Average",
+        "view": "timeSeries"
+      }
+    },
+    {
+      "type": "alarm",
+      "x": 0,
+      "y": 12,
+      "width": 24,
+      "height": 4,
+      "properties": {
+        "title": "Alarm Status",
+        "alarms": [
+          "arn:aws:cloudwatch:us-east-1:889168907206:alarm:cloudwatch-monitoring-high-memory",
+          "arn:aws:cloudwatch:us-east-1:889168907206:alarm:cloudwatch-monitoring-high-disk"
+        ]
+      }
+    }
+  ]
+}
